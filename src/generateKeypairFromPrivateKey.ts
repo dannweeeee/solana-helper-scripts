@@ -15,25 +15,19 @@ function generateKeypairFromPrivateKey() {
       throw new Error("PRIVATE_KEY is not defined in the .env file");
     }
 
-    // Decode the base58 private key
     const secretKey = bs58.decode(privateKeyString);
 
-    // Create a keypair from the secret key
     const keypair = Keypair.fromSecretKey(secretKey);
 
-    // Display the public key
     console.log("Public Key:", keypair.publicKey.toString());
 
-    // Create a JSON object with the keypair information
     const keypairJson = {
       publicKey: keypair.publicKey.toString(),
       secretKey: Array.from(keypair.secretKey),
     };
 
-    // Write the keypair to a JSON file
     const outputDir = path.join(__dirname, "../keypair");
 
-    // Create directory if it doesn't exist
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
@@ -48,11 +42,6 @@ function generateKeypairFromPrivateKey() {
     console.error("Error generating keypair:", error);
     throw error;
   }
-}
-
-// Execute the function if this script is run directly
-if (require.main === module) {
-  generateKeypairFromPrivateKey();
 }
 
 generateKeypairFromPrivateKey();

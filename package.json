@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:generateKeypair": "tsx src/generateKeypair.ts"
+    "test:generateKeypair": "tsx src/generateKeypairFromPrivateKey.ts",
+    "test:generatePrivateKey": "tsx src/generatePrivateKeyFromKeypair.ts"
   },
   "keywords": [
     "solana",
